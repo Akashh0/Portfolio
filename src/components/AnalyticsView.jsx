@@ -2,50 +2,123 @@ import React from 'react';
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar, Tooltip } from 'recharts';
 import { motion } from 'framer-motion';
 
-const data = [
-  { subject: 'Computer Vision', A: 95, fullMark: 100 },
-  { subject: 'Predictive AI', A: 90, fullMark: 100 },
-  { subject: 'UI/UX Design', A: 75, fullMark: 100 },
-  { subject: 'Architecture', A: 85, fullMark: 100 },
-  { subject: 'Data Science', A: 90, fullMark: 100 },
-  { subject: 'Web Dev', A: 70, fullMark: 100 },
-];
-
-const skills = [
-  { name: "Python / PyTorch", level: "95%" },
-  { name: "TransUNet / CNNs", level: "90%" },
-  { name: "React / Figma", level: "75%" },
-  { name: "SQL / Pandas", level: "85%" },
+// --- DATA STRUCTURE: 4 CLUSTERS ---
+const skillCategories = [
+  {
+    title: "Deep Learning & Vision",
+    description: "Core architectures for medical imaging and predictive modeling.",
+    chartData: [
+      { subject: 'Architecture', A: 95, fullMark: 100 },
+      { subject: 'Optimization', A: 85, fullMark: 100 },
+      { subject: 'Training', A: 90, fullMark: 100 },
+      { subject: 'Deployment', A: 80, fullMark: 100 },
+      { subject: 'Research', A: 85, fullMark: 100 },
+    ],
+    skills: [
+      { name: "PyTorch / TensorFlow", level: "95%" },
+      { name: "TransUNet / CNNs", level: "92%" },
+      { name: "OpenCV / MediaPipe", level: "88%" },
+      { name: "YOLO / Object Detection", level: "90%" },
+      { name: "Transformers (NLP)", level: "85%" },
+    ]
+  },
+  {
+    title: "Data Science & Analytics",
+    description: "Processing raw chaos into actionable statistical insights.",
+    chartData: [
+      { subject: 'Statistics', A: 90, fullMark: 100 },
+      { subject: 'Visualization', A: 95, fullMark: 100 },
+      { subject: 'Cleaning', A: 85, fullMark: 100 },
+      { subject: 'SQL Logic', A: 80, fullMark: 100 },
+      { subject: 'Pipelines', A: 75, fullMark: 100 },
+    ],
+    skills: [
+      { name: "Pandas / NumPy", level: "95%" },
+      { name: "Scikit-Learn", level: "90%" },
+      { name: "Matplotlib / Seaborn", level: "92%" },
+      { name: "SQL / Database", level: "85%" },
+      { name: "Jupyter Notebooks", level: "98%" },
+    ]
+  },
+  {
+    title: "Web & Spatial Interface",
+    description: "Building immersive frontends for complex AI backends.",
+    chartData: [
+      { subject: 'UI Logic', A: 85, fullMark: 100 },
+      { subject: '3D Math', A: 70, fullMark: 100 },
+      { subject: 'Reactivity', A: 90, fullMark: 100 },
+      { subject: 'Styling', A: 95, fullMark: 100 },
+      { subject: 'UX Flow', A: 80, fullMark: 100 },
+    ],
+    skills: [
+      { name: "React.js / Vite", level: "90%" },
+      { name: "Tailwind CSS", level: "95%" },
+      { name: "Three.js / R3F", level: "75%" },
+      { name: "Figma (Prototyping)", level: "85%" },
+      { name: "Framer Motion", level: "80%" },
+    ]
+  },
+  {
+    title: "DevOps & Tools",
+    description: "The environment and tools that maintain system integrity.",
+    chartData: [
+      { subject: 'Version Ctrl', A: 95, fullMark: 100 },
+      { subject: 'Container', A: 75, fullMark: 100 },
+      { subject: 'Cloud', A: 70, fullMark: 100 },
+      { subject: 'Linux', A: 85, fullMark: 100 },
+      { subject: 'Workflow', A: 90, fullMark: 100 },
+    ],
+    skills: [
+      { name: "Git / GitHub", level: "95%" },
+      { name: "Docker", level: "75%" },
+      { name: "Linux / Bash", level: "85%" },
+      { name: "VS Code / Extensions", level: "95%" },
+      { name: "Postman / API", level: "88%" },
+    ]
+  }
 ];
 
 const AnalyticsView = () => {
   return (
-    <div className="w-full flex flex-col md:flex-row items-center justify-between gap-12 text-white">
+    <div className="w-full flex flex-col gap-32 py-20">
+      {skillCategories.map((category, index) => (
+        <SkillBlock 
+          key={index} 
+          category={category} 
+          isReversed={index % 2 !== 0} // Zig-Zag Logic: Odd numbers get reversed
+        />
+      ))}
+    </div>
+  );
+};
+
+// --- SUB-COMPONENT FOR EACH BLOCK ---
+const SkillBlock = ({ category, isReversed }) => {
+  return (
+    <div className={`flex flex-col md:flex-row items-center justify-between gap-12 md:gap-24 w-full ${isReversed ? 'md:flex-row-reverse' : ''}`}>
       
-      {/* LEFT: THE HOLOGRAPHIC RADAR */}
+      {/* 1. THE RADAR CHART */}
       <motion.div 
         initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 0.8 }}
         className="w-full md:w-1/2 h-[400px] relative"
       >
-        <div className="absolute inset-0 bg-green-500/5 blur-3xl rounded-full z-0"></div>
+        {/* Glowing Background Blob */}
+        <div className="absolute inset-0 bg-emerald-500/5 blur-3xl rounded-full z-0"></div>
+        
         <ResponsiveContainer width="100%" height="100%">
-          <RadarChart cx="50%" cy="50%" outerRadius="70%" data={data}>
-            {/* Minimalist Grid */}
+          <RadarChart cx="50%" cy="50%" outerRadius="70%" data={category.chartData}>
             <PolarGrid stroke="#333" strokeDasharray="3 3" />
-            
-            {/* Elegant Typography for Labels */}
             <PolarAngleAxis 
               dataKey="subject" 
-              tick={{ fill: '#9ca3af', fontSize: 12, fontFamily: 'Inter' }} 
+              tick={{ fill: '#6b7280', fontSize: 12, fontFamily: 'Inter' }} 
             />
-            
-            {/* The Glowing Shape */}
             <Radar
-              name="Skillset"
+              name="Proficiency"
               dataKey="A"
-              stroke="#10b981" // Emerald Green line
+              stroke="#10b981" 
               strokeWidth={2}
               fill="#10b981"
               fillOpacity={0.2}
@@ -58,26 +131,28 @@ const AnalyticsView = () => {
         </ResponsiveContainer>
       </motion.div>
 
-      {/* RIGHT: THE FLUID METRICS */}
+      {/* 2. THE SKILL LIST */}
       <div className="w-full md:w-1/2 space-y-8">
         <motion.div
-           initial={{ opacity: 0, x: 20 }}
-           animate={{ opacity: 1, x: 0 }}
-           transition={{ delay: 0.3 }}
+           initial={{ opacity: 0, x: isReversed ? -20 : 20 }}
+           whileInView={{ opacity: 1, x: 0 }}
+           viewport={{ once: true }}
+           transition={{ delay: 0.2 }}
         >
-          <h3 className="text-3xl font-serif italic mb-2">Core Competencies</h3>
-          <p className="text-gray-400 font-sans text-sm max-w-sm">
-            A visual representation of technical distribution. Heavy focus on Deep Learning architectures balanced with design sensibilities.
+          <h3 className="text-3xl md:text-4xl font-serif italic mb-2 text-white">{category.title}</h3>
+          <p className="text-gray-400 font-sans text-sm max-w-sm leading-relaxed">
+            {category.description}
           </p>
         </motion.div>
 
         <div className="space-y-6">
-          {skills.map((skill, index) => (
+          {category.skills.map((skill, index) => (
             <motion.div 
               key={index}
               initial={{ opacity: 0, width: 0 }}
-              animate={{ opacity: 1, width: "100%" }}
-              transition={{ delay: 0.5 + (index * 0.1), duration: 0.8 }}
+              whileInView={{ opacity: 1, width: "100%" }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 + (index * 0.1), duration: 0.8 }}
               className="relative"
             >
               <div className="flex justify-between mb-2 font-mono text-xs text-gray-400">
@@ -85,13 +160,12 @@ const AnalyticsView = () => {
                 <span>{skill.level}</span>
               </div>
               
-              {/* Background Line */}
               <div className="h-[1px] w-full bg-gray-800 relative overflow-hidden">
-                {/* Foreground Growing Line */}
                 <motion.div 
                   initial={{ width: 0 }}
-                  animate={{ width: skill.level }}
-                  transition={{ duration: 1.5, ease: "circOut", delay: 0.8 }}
+                  whileInView={{ width: skill.level }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, ease: "circOut", delay: 0.5 }}
                   className="absolute top-0 left-0 h-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]"
                 />
               </div>
@@ -99,6 +173,7 @@ const AnalyticsView = () => {
           ))}
         </div>
       </div>
+
     </div>
   );
 };
