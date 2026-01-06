@@ -8,17 +8,17 @@ const skillCategories = [
     title: "Deep Learning & Vision",
     description: "Core architectures for medical imaging and predictive modeling.",
     chartData: [
-      { subject: 'Architecture', A: 95, fullMark: 100 },
+      { subject: 'Architecture', A: 90, fullMark: 100 },
       { subject: 'Optimization', A: 85, fullMark: 100 },
-      { subject: 'Training', A: 90, fullMark: 100 },
-      { subject: 'Deployment', A: 80, fullMark: 100 },
-      { subject: 'Research', A: 85, fullMark: 100 },
+      { subject: 'Training', A: 80, fullMark: 100 },
+      { subject: 'Deployment', A: 70, fullMark: 100 },
+      { subject: 'Research', A: 90, fullMark: 100 },
     ],
     skills: [
-      { name: "PyTorch / TensorFlow", level: "95%" },
-      { name: "TransUNet / CNNs", level: "92%" },
-      { name: "OpenCV / MediaPipe", level: "88%" },
-      { name: "YOLO / Object Detection", level: "90%" },
+      { name: "PyTorch / TensorFlow", level: "70%" },
+      { name: "TransUNet / CNNs", level: "80%" },
+      { name: "OpenCV / MediaPipe", level: "70%" },
+      { name: "YOLO / Object Detection", level: "70%" },
       { name: "Transformers (NLP)", level: "85%" },
     ]
   },
@@ -28,16 +28,16 @@ const skillCategories = [
     chartData: [
       { subject: 'Statistics', A: 90, fullMark: 100 },
       { subject: 'Visualization', A: 95, fullMark: 100 },
-      { subject: 'Cleaning', A: 85, fullMark: 100 },
-      { subject: 'SQL Logic', A: 80, fullMark: 100 },
+      { subject: 'Cleaning', A: 88, fullMark: 100 },
+      { subject: 'SQL Logic', A: 70, fullMark: 100 },
       { subject: 'Pipelines', A: 75, fullMark: 100 },
     ],
     skills: [
       { name: "Pandas / NumPy", level: "95%" },
       { name: "Scikit-Learn", level: "90%" },
       { name: "Matplotlib / Seaborn", level: "92%" },
-      { name: "SQL / Database", level: "85%" },
-      { name: "Jupyter Notebooks", level: "98%" },
+      { name: "SQL / Database", level: "70%" },
+      { name: "Jupyter Notebooks", level: "80%" },
     ]
   },
   {
@@ -52,9 +52,9 @@ const skillCategories = [
     ],
     skills: [
       { name: "React.js / Vite", level: "90%" },
-      { name: "Tailwind CSS", level: "95%" },
+      { name: "Tailwind CSS", level: "75%" },
       { name: "Three.js / R3F", level: "75%" },
-      { name: "Figma (Prototyping)", level: "85%" },
+      { name: "Figma (Prototyping)", level: "75%" },
       { name: "Framer Motion", level: "80%" },
     ]
   },
@@ -62,16 +62,16 @@ const skillCategories = [
     title: "DevOps & Tools",
     description: "The environment and tools that maintain system integrity.",
     chartData: [
-      { subject: 'Version Ctrl', A: 95, fullMark: 100 },
-      { subject: 'Container', A: 75, fullMark: 100 },
+      { subject: 'Version Control', A: 95, fullMark: 100 },
+      { subject: 'Container', A: 70, fullMark: 100 },
       { subject: 'Cloud', A: 70, fullMark: 100 },
-      { subject: 'Linux', A: 85, fullMark: 100 },
+      { subject: 'Terminal', A: 80, fullMark: 100 },
       { subject: 'Workflow', A: 90, fullMark: 100 },
     ],
     skills: [
       { name: "Git / GitHub", level: "95%" },
-      { name: "Docker", level: "75%" },
-      { name: "Linux / Bash", level: "85%" },
+      { name: "Docker", level: "70%" },
+      { name: "Bash", level: "85%" },
       { name: "VS Code / Extensions", level: "95%" },
       { name: "Postman / API", level: "88%" },
     ]

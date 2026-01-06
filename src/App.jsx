@@ -10,61 +10,46 @@ import ContactView from './components/ContactView';
 const projects = [
   {
     id: 1,
-    title: "DeepBallonNet",
+    title: "Ballon'Dor Predictor",
     category: "Predictive Analytics",
     color: "from-blue-900 via-blue-950 to-black",
-    description: "Forecasting Champions League winners using historical data metrics."
+    description: "Forecasting Champions League winners using historical data metrics.",
+    link: "https://github.com/Akashh0/DL-Model" // <--- ADD THIS
   },
   {
     id: 2,
     title: "Lung Cancer Detection",
     category: "Medical AI / Vision",
     color: "from-red-900 via-red-950 to-black",
-    description: "TransUNet architecture for high-precision tumor segmentation."
+    description: "TransUNet architecture for high-precision tumor segmentation.",
+    link: "https://lung-cancer-demo.vercel.app" // Example of a demo link
   },
   {
     id: 3,
-    title: "Evolving Human AI",
-    category: "Generative Systems",
+    title: "Resume Analyser",
+    category: "Analytic Systems",
     color: "from-purple-900 via-purple-950 to-black",
-    description: "A digital companion that matures visually and mentally over time."
+    description: "An AI model for resume analysis.",
+    link: "https://github.com/Akashh0/Resumate"
   },
   {
     id: 4,
-    title: "Mid-Air Sculpting",
-    category: "Spatial Computing",
+    title: "Career Roadmap Generator",
+    category: "Generative Systems",
     color: "from-emerald-900 via-emerald-950 to-black",
-    description: "Hand-tracking interface for 3D modeling without physical tools."
+    description: "A BERT model for career roadmap generation. The backend (Model) Github repo is linked here.",
+    link: "https://github.com/Akashh0/CareerpathBackend"
   },
-  // --- NEW PROJECTS ADDED BELOW ---
+  // ... do this for all 8 projects ...
   {
     id: 5,
-    title: "Neuro-Style Transfer",
-    category: "Computer Vision",
-    color: "from-orange-900 via-orange-950 to-black",
-    description: "Real-time artistic style transfer for video streams using CNNs."
-  },
-  {
-    id: 6,
-    title: "Algo-Trading Bot",
-    category: "Fintech / Data",
-    color: "from-cyan-900 via-cyan-950 to-black",
-    description: "Reinforcement learning agent optimized for crypto market volatility."
-  },
-  {
-    id: 7,
-    title: "Smart Traffic Control",
-    category: "IoT / AI",
-    color: "from-yellow-900 via-yellow-950 to-black",
-    description: "Adaptive traffic light system based on vehicle density analysis."
-  },
-  {
-    id: 8,
-    title: "Voice Auth System",
+    title: "Emotion Detection using Wave Format",
     category: "Audio Processing",
-    color: "from-pink-900 via-pink-950 to-black",
-    description: "Biometric security system using voiceprint analysis."
-  }
+    color: "from-orange-900 via-orange-950 to-black",
+    description: "Real-time emotion detection using wave format.",
+    link: "#"
+  },
+  
 ];
 
 function App() {

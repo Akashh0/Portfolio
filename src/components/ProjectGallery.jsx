@@ -4,17 +4,21 @@ import { ArrowUpRight } from 'lucide-react';
 
 const ProjectGallery = ({ projects, setHoveredProject }) => {
   return (
-    // CHANGED: Increased gap to 'gap-10' (40px) and kept grid-cols-3
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full py-10">
       {projects.map((project, index) => (
-        <motion.div
+        <motion.a
           key={project.id}
+          href={project.link} // <--- The Link from your data
+          target="_blank"     // Opens in a new tab
+          rel="noopener noreferrer" // Security best practice
+          
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: index * 0.1 }}
-          // CHANGED: Adjusted padding (p-8) and height (min-h-[400px]) for a more premium, spread-out look
-          className="group relative flex flex-col justify-between p-8 border border-white/10 rounded-3xl bg-white/5 hover:bg-white/10 transition-all duration-500 cursor-pointer min-h-[400px]"
+          
+          className="group relative flex flex-col justify-between p-8 border border-white/10 rounded-3xl bg-white/5 hover:bg-white/10 transition-all duration-500 cursor-pointer min-h-[400px]" // Added 'block' to ensure it behaves correctly
+          
           onMouseEnter={() => setHoveredProject(project.id)}
           onMouseLeave={() => setHoveredProject(null)}
         >
@@ -44,7 +48,7 @@ const ProjectGallery = ({ projects, setHoveredProject }) => {
           
           {/* Hover Glow Effect */}
           <div className="absolute inset-0 rounded-3xl ring-1 ring-white/0 group-hover:ring-white/20 transition-all duration-500 pointer-events-none" />
-        </motion.div>
+        </motion.a>
       ))}
     </div>
   );
