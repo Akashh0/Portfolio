@@ -22,15 +22,15 @@ const projects = [
     category: "Medical AI / Vision",
     color: "from-red-900 via-red-950 to-black",
     description: "TransUNet architecture for high-precision tumor segmentation.",
-    link: "https://lung-cancer-demo.vercel.app" // Example of a demo link
+    link: "" // Example of a demo link
   },
   {
     id: 3,
     title: "Resume Analyser",
     category: "Analytic Systems",
     color: "from-purple-900 via-purple-950 to-black",
-    description: "An AI model for resume analysis.",
-    link: "https://github.com/Akashh0/Resumate"
+    description: "An AI model for resume analysis & provides throughput insights.",
+    link: "https://talent-align.streamlit.app/"
   },
   {
     id: 4,
@@ -47,7 +47,7 @@ const projects = [
     category: "Audio Processing",
     color: "from-orange-900 via-orange-950 to-black",
     description: "Real-time emotion detection using wave format.",
-    link: "#"
+    link: "https://github.com/Akashh0/Emotion-Detection-Using-Wave-Format"
   },
   
 ];
