@@ -37,7 +37,7 @@ const ProfileView = () => {
         >
           {/* RESUME BUTTON (Links to a file in your public/Assets folder) */}
           <a 
-            href="/Assets/Resume.pdf" 
+            href="/Assets/Akash's Resume.pdf" 
             download="Akash_Krishnan_Resume"
             className="flex items-center gap-2 px-8 py-4 bg-white text-black text-lg rounded-full hover:bg-gray-200 transition-colors"
           >
