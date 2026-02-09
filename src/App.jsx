@@ -22,7 +22,7 @@ const projects = [
     category: "Medical AI / Vision",
     color: "from-red-900 via-red-950 to-black",
     description: "TransUNet architecture for high-precision tumor segmentation.",
-    link: "" // Example of a demo link
+    link: "https://github.com/Akashh0/Lung-Cancer-Detection-TransUNet-based-" // Example of a demo link
   },
   {
     id: 3,
