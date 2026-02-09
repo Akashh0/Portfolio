@@ -13,7 +13,7 @@ const projects = [
     title: "Ballon'Dor Predictor",
     category: "Predictive Analytics",
     color: "from-blue-900 via-blue-950 to-black",
-    description: "Forecasting Champions League winners using historical data metrics.",
+    description: "Forecasting Champions League & Ballon D'or winners using historical data metrics.",
     link: "https://github.com/Akashh0/DL-Model" // <--- ADD THIS
   },
   {
@@ -21,7 +21,7 @@ const projects = [
     title: "Lung Cancer Detection",
     category: "Medical AI / Vision",
     color: "from-red-900 via-red-950 to-black",
-    description: "TransUNet architecture for high-precision tumor segmentation.",
+    description: "A Hybrid TransUNet architecture for high-precision tumor segmentation/Classification.",
     link: "https://github.com/Akashh0/Lung-Cancer-Detection-TransUNet-based-" // Example of a demo link
   },
   {
