@@ -30,7 +30,7 @@ const projects = [
     category: "Analytic Systems",
     color: "from-purple-900 via-purple-950 to-black",
     description: "An AI model for resume analysis & provides throughput insights.",
-    link: "https://talent-align.streamlit.app/"
+    link: "https://analyseyourresume.netlify.app/"
   },
   {
     id: 4,
