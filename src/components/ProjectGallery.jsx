@@ -4,50 +4,75 @@ import { ArrowUpRight } from 'lucide-react';
 
 const ProjectGallery = ({ projects, setHoveredProject }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 w-full py-10">
+    <div className="w-full py-20 flex flex-col gap-px bg-transparent">
       {projects.map((project, index) => (
         <motion.a
           key={project.id}
-          href={project.link} // <--- The Link from your data
-          target="_blank"     // Opens in a new tab
-          rel="noopener noreferrer" // Security best practice
+          href={project.link}
+          target="_blank"
+          rel="noopener noreferrer"
           
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6, delay: index * 0.1 }}
-          
-          className="group relative flex flex-col justify-between p-8 border border-white/10 rounded-3xl bg-white/5 hover:bg-white/10 transition-all duration-500 cursor-pointer min-h-[400px]" // Added 'block' to ensure it behaves correctly
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: index * 0.1 }}
           
           onMouseEnter={() => setHoveredProject(project.id)}
           onMouseLeave={() => setHoveredProject(null)}
+          className="group relative w-full py-12 md:py-20 border-b border-white/5 flex flex-col transition-all duration-700 ease-in-out hover:px-8"
         >
-          {/* Top Section */}
-          <div className="flex justify-between items-start mb-6">
-            <span className="text-[11px] font-mono text-emerald-400 tracking-widest uppercase border border-emerald-500/30 px-3 py-1 rounded-full">
-              {project.category}
-            </span>
-            <div className="p-3 rounded-full border border-white/20 text-white opacity-50 group-hover:opacity-100 group-hover:bg-white group-hover:text-black transition-all duration-500">
-              <ArrowUpRight size={20} />
+          {/* Background Reveal Effect */}
+          <div className="absolute inset-0 bg-white/[0.02] scale-y-0 group-hover:scale-y-100 transition-transform duration-500 origin-bottom pointer-events-none" />
+
+          {/* MAIN CONTENT ROW */}
+          <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-8 md:gap-20">
+            
+            {/* Left Section: ID & Category */}
+            <div className="flex items-center gap-6 min-w-[200px]">
+              <span className="font-mono text-[10px] text-zinc-600 group-hover:text-white transition-colors">
+                {String(index + 1).padStart(2, '0')}
+              </span>
+              <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-[0.4em] px-3 py-1 border border-zinc-800 rounded-full group-hover:border-white/20 group-hover:text-white transition-all">
+                {project.category}
+              </span>
+            </div>
+
+            {/* Middle Section: Project Title */}
+            <div className="flex-grow">
+              <h3 className="text-5xl md:text-7xl lg:text-8xl font-serif text-zinc-400 group-hover:text-white group-hover:italic transition-all duration-700 tracking-tighter leading-none">
+                {project.title}
+              </h3>
+            </div>
+
+            {/* Right Section: Action Icon */}
+            <div className="hidden md:flex flex-col items-end gap-2">
+              <div className="p-4 rounded-full border border-white/5 text-zinc-600 group-hover:text-white group-hover:border-white/20 transition-all duration-500">
+                <ArrowUpRight size={24} strokeWidth={1} />
+              </div>
+              <span className="text-[8px] font-mono text-zinc-700 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity">
+                View_Case_Study
+              </span>
             </div>
           </div>
 
-          {/* Middle Section: Title */}
-          <div className="flex-grow flex items-center">
-            <h3 className="text-4xl xl:text-5xl font-serif text-gray-300 group-hover:text-white transition-colors duration-500 leading-tight">
-              {project.title}
-            </h3>
-          </div>
+          {/* BOTTOM REVEAL: Description (Slides down on hover) */}
+          <motion.div 
+            className="overflow-hidden h-0 group-hover:h-auto transition-all duration-500 ease-in-out"
+          >
+            <div className="pt-8 md:pt-12 md:pl-[200px] flex flex-col md:flex-row md:items-end justify-between gap-6">
+              <p className="max-w-xl text-zinc-500 font-sans font-light text-sm md:text-base leading-relaxed">
+                {project.description}
+              </p>
+              
+              {/* Aesthetic Pips for the UX feel */}
+              <div className="flex gap-1 mb-1">
+                {[...Array(6)].map((_, i) => (
+                  <div key={i} className="h-[2px] w-8 bg-zinc-900 group-hover:bg-zinc-700 transition-colors" />
+                ))}
+              </div>
+            </div>
+          </motion.div>
 
-          {/* Bottom Section: Description */}
-          <div className="mt-8 pt-6 border-t border-white/10">
-            <p className="text-gray-400 font-sans text-sm leading-relaxed group-hover:text-gray-200 transition-colors">
-              {project.description}
-            </p>
-          </div>
-          
-          {/* Hover Glow Effect */}
-          <div className="absolute inset-0 rounded-3xl ring-1 ring-white/0 group-hover:ring-white/20 transition-all duration-500 pointer-events-none" />
         </motion.a>
       ))}
     </div>

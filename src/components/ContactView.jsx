@@ -1,115 +1,96 @@
-import React, { useState } from 'react';
-import { Mail, ArrowUpRight, Send, Loader2 } from 'lucide-react';
+import React from 'react';
+import { motion } from 'framer-motion';
+import { ArrowUpRight } from 'lucide-react';
 
 const ContactView = () => {
-  const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null); // 'success' or 'error'
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    const formData = new FormData(e.target);
-    const data = Object.fromEntries(formData.entries());
-
-    // REPLACE THIS URL WITH YOUR GOOGLE SHEET SCRIPT URL (See instructions below)
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby0wOFbr9taIFdVgihYZ2J4C0CQlefhvxetH3aX6POpxdOM38Qp3XrZqF-YlSdxem7akQ/exec"; 
-
-    try {
-      await fetch(GOOGLE_SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors', // Important for Google Sheets
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-      setStatus('success');
-      e.target.reset();
-    } catch (error) {
-      setStatus('error');
-    } finally {
-      setLoading(false);
-      setTimeout(() => setStatus(null), 5000); // Reset status after 5s
-    }
-  };
-
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-16 py-20">
-      
-      {/* LEFT: Contact Info */}
-      <div className="flex flex-col justify-center space-y-8">
-        <div>
-          <p className="text-sm font-sans text-emerald-400 tracking-[0.2em] uppercase mb-4">
-            Contact
-          </p>
-          <h2 className="text-5xl font-serif text-white leading-tight">
-            Let's start a <br /> <span className="italic text-gray-500">Conversation.</span>
-          </h2>
-        </div>
+    <section className="w-full min-h-screen bg-transparent flex items-center justify-center p-6 md:p-16">
+      <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-center">
         
-        <p className="text-gray-400 max-w-sm leading-relaxed">
-          Interested in AI architecture or predictive modeling? Fill out the form, and your details will be sent directly to my database.
-        </p>
+        {/* LEFT SIDE: Minimalist Typography */}
+        <div className="space-y-12">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            className="text-white text-4xl md:text-6xl font-serif leading-[1.1] tracking-tighter max-w-xl"
+          >
+            Turning <span className="italic text-zinc-500">What if's</span> <br />into<span className="italic text-zinc-500"> It is</span> 
+          </motion.h2>
 
-        <div className="flex gap-6 pt-8">
-          <a href="#" className="flex items-center gap-2 text-white hover:text-emerald-400 transition-colors border-b border-white/20 pb-1">
-            LinkedIn <ArrowUpRight size={14} />
-          </a>
-          <a href="#" className="flex items-center gap-2 text-white hover:text-emerald-400 transition-colors border-b border-white/20 pb-1">
-            GitHub <ArrowUpRight size={14} />
-          </a>
-          <a href="mailto:your@email.com" className="flex items-center gap-2 text-white hover:text-emerald-400 transition-colors border-b border-white/20 pb-1">
-            Email <Mail size={14} />
-          </a>
+          <div className="space-y-1 border-l border-zinc-800 pl-6">
+            <h3 className="text-zinc-200 text-xl font-medium tracking-tight">M Akash Krishnan</h3>
+            <p className="text-zinc-600 text-[10px] uppercase tracking-[0.3em] font-mono">
+              AI & Data Enthusiast | Blender Artist
+            </p>
+          </div>
+
+          <p className="text-zinc-800 text-[10px] font-mono uppercase tracking-widest pt-20">
+            Copyright @ 2026
+          </p>
+        </div>
+
+        {/* RIGHT SIDE: The Darkened Physical Device */}
+        <div className="flex justify-center lg:justify-end">
+          <div className="w-full max-w-[480px] bg-[#0A0A0A] p-8 md:p-10 rounded-[3.5rem] shadow-[0_0_50px_rgba(0,0,0,1)] relative border border-white/5">
+            
+            {/* The Internal Screen: Obsidian Glass Look */}
+            <div className="bg-[#000000] p-1.5 rounded-[2.5rem] shadow-[inset_0_2px_10px_rgba(255,255,255,0.05)] mb-10">
+              <div className="bg-[#0F0F0F] rounded-[2.3rem] p-6 md:p-8 min-h-[240px] flex flex-col justify-between font-mono relative overflow-hidden border border-white/5">
+                
+                {/* Screen Header */}
+                <div className="flex justify-between text-[9px] font-medium uppercase tracking-widest text-zinc-500">
+                  <span className="flex items-center gap-1"></span>
+                </div>
+
+                {/* Main Display Area */}
+                <div className="text-center space-y-4 py-4 relative z-10">
+                  <p className="text-[10px] text-zinc-600 uppercase tracking-[0.4em]">Your Destination</p>
+                  {/* REDUCED: Mobile font size set to text-base, desktop stays text-2xl */}
+                  <p className="text-xs md:text-2xl font-medium text-white tracking-tighter lowercase break-all">
+                    akashkrishh.dev@gmail.com
+                  </p>
+                </div>
+
+                {/* Footer Data */}
+                <div className="flex justify-between items-end italic text-[9px] text-zinc-700 font-medium tracking-widest">
+                  <span>2026</span>
+                </div>
+
+                {/* Subtle Scanline Overlay */}
+                <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] bg-[length:100%_2px,3px_100%] z-0 opacity-20" />
+              </div>
+            </div>
+
+            {/* The Bottom Section: Grille & Button */}
+            <div className="flex flex-col md:flex-row items-center justify-between gap-6 px-2">
+              {/* HIDDEN ON MOBILE: Speaker grille is removed on small screens to give button space */}
+              <div className="hidden md:flex flex-col gap-1.5">
+                {[...Array(3)].map((_, i) => (
+                  <div key={i} className="w-10 h-[1px] bg-zinc-900 shadow-inner" />
+                ))}
+              </div>
+
+              {/* EXPANDED: Button set to w-full on mobile, flex-grow on desktop */}
+              <a 
+                href="mailto:akashkrishh.dev@gmail.com" 
+                className="w-full md:w-auto md:flex-grow no-underline"
+              >
+                <motion.button
+                  whileHover={{ scale: 1.02, backgroundColor: "#00E5FF" }}
+                  whileTap={{ scale: 0.98 }}
+                  className="w-full bg-[#00D1FF] text-black font-mono text-[11px] md:text-[11px] uppercase tracking-[0.2em] font-bold py-6 px-8 rounded-full shadow-[0_15px_30px_rgba(0,209,255,0.15)] transition-all flex items-center justify-center gap-2 cursor-pointer"
+                >
+                  Let's Connect! <ArrowUpRight size={14} strokeWidth={3} />
+                </motion.button>
+              </a>
+            </div>
+
+            {/* Glass Finish Highlight */}
+            <div className="absolute top-0 left-0 w-full h-full rounded-[3.5rem] pointer-events-none border-t border-l border-white/10 opacity-30" />
+          </div>
         </div>
       </div>
-
-      {/* RIGHT: The Excel Form */}
-      <div className="bg-white/5 p-10 rounded-3xl border border-white/10 backdrop-blur-sm">
-        <form onSubmit={handleSubmit} className="space-y-8">
-          
-          <div className="space-y-2">
-            <label className="text-xs font-mono text-gray-400 uppercase tracking-widest">Name</label>
-            <input 
-              name="name" 
-              required 
-              type="text" 
-              placeholder="John Doe"
-              className="w-full bg-transparent border-b border-white/20 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors placeholder-gray-600"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-xs font-mono text-gray-400 uppercase tracking-widest">Email</label>
-            <input 
-              name="email" 
-              required 
-              type="email" 
-              placeholder="john@example.com"
-              className="w-full bg-transparent border-b border-white/20 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors placeholder-gray-600"
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="text-xs font-mono text-gray-400 uppercase tracking-widest">Message</label>
-            <textarea 
-              name="message" 
-              required 
-              rows="4" 
-              placeholder="Infomation fills here!"
-              className="w-full bg-transparent border-b border-white/20 py-3 text-white focus:outline-none focus:border-emerald-500 transition-colors placeholder-gray-600 resize-none"
-            ></textarea>
-          </div>
-
-          <button 
-            disabled={loading}
-            className={`w-full py-4 rounded-full flex items-center justify-center gap-2 transition-all duration-300 ${status === 'success' ? 'bg-emerald-500 text-black' : 'bg-white text-black hover:bg-gray-200'}`}
-          >
-            {loading ? <Loader2 className="animate-spin" /> : status === 'success' ? 'Sent Successfully!' : 'Send Message'}
-            {!loading && status !== 'success' && <Send size={16} />}
-          </button>
-        </form>
-      </div>
-    </div>
+    </section>
   );
 };
 

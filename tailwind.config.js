@@ -7,28 +7,21 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
-        serif: ['"Playfair Display"', 'serif'], // The "Classic" element
+        // Keeping Inter for UI, but adding a sleek serif for designer accents
+        sans: ['Inter', 'sans-serif'], 
+        serif: ['"Playfair Display"', 'serif'], 
       },
       colors: {
-        'void': '#050505', // Softer than pure black
-        'glass': 'rgba(255, 255, 255, 0.05)',
+        'studio-900': '#09090b', // Deepest Zinc (not pure black)
+        'studio-800': '#18181b', // Card Backgrounds
+        'studio-700': '#27272a', // Borders
+        'studio-400': '#a1a1aa', // Muted Text
+        'studio-50': '#fafafa',  // Primary Text
       },
-      animation: {
-        'blob': 'blob 10s infinite',
-        'fade-in': 'fadeIn 1.5s ease-out forwards',
-      },
-      keyframes: {
-        blob: {
-          '0%': { transform: 'translate(0px, 0px) scale(1)' },
-          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
-          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
-          '100%': { transform: 'translate(0px, 0px) scale(1)' },
-        },
-        fadeIn: {
-          '0%': { opacity: '0', transform: 'translateY(20px)' },
-          '100%': { opacity: '1', transform: 'translateY(0)' },
-        }
+      transitionTimingFunction: {
+        // "Apple-style" silky smooth easing curve
+        'spring': 'cubic-bezier(0.175, 0.885, 0.32, 1.1)',
+        'smooth': 'cubic-bezier(0.23, 1, 0.32, 1)',
       }
     },
   },
