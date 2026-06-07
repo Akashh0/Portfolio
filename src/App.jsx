@@ -10,7 +10,7 @@ import ContactView from './components/ContactView';
 const projects = [
   {
     id: 1,
-    title: "Ballon'Dor Predictor",
+    title: "Football Deep Learning Model",
     category: "Predictive Analytics",
     color: "from-blue-900 via-blue-950 to-black",
     description: "Forecasting Champions League & Ballon D'or winners using historical data metrics.",
