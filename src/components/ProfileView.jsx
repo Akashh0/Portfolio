@@ -74,7 +74,7 @@ const ProfileView = () => {
           </div>
 
           <a 
-            href="/Assets/Resume.pdf" 
+            href="/Assets/Akash's Resume.pdf" 
             download="Akash_Krishnan_Resume"
             className="group flex items-center gap-2 text-white text-[10px] md:text-xs uppercase tracking-[0.2em] font-medium border-b border-zinc-700 hover:border-white pb-1 md:pb-2 transition-all"
           >
